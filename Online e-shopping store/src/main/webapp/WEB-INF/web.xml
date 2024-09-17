@@ -23,4 +23,41 @@
 		<servlet-name>register</servlet-name>
 		<url-pattern>/register</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>updateUser</servlet-name>
+		<servlet-class>controller.updateProfileControllerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updateUser</servlet-name>
+		<url-pattern>/updateUser</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>addReview</servlet-name>
+		<servlet-class>controller.addReviewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>addReview</servlet-name>
+		<url-pattern>/addReview</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>viewReview</servlet-name>
+		<servlet-class>controller.viewReviewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>viewReview</servlet-name>
+		<url-pattern>/viewReview</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>updateReview</servlet-name>
+		<servlet-class>controller.updateReviewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updateReview</servlet-name>
+		<url-pattern>/updateReview</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

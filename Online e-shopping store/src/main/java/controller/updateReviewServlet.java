@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,10 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.userDBUtil;
+import model.reviewDBUtil;
 
-@WebServlet("/registerControllerServlet")
-public class registerControllerServlet extends HttpServlet {
+
+@WebServlet("/updateReviewServlet")
+public class updateReviewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
@@ -21,12 +21,14 @@ public class registerControllerServlet extends HttpServlet {
 		
 		boolean isTrue;
 		
-		String userName = request.getParameter("userName");
-		String email = request.getParameter("email");
-		String role = request.getParameter("role");
-		String password = request.getParameter("password");
+		String revid = request.getParameter("reviewId");
+		String productId = request.getParameter("productId");
+		String userId = request.getParameter("userId");
+		String rating = request.getParameter("rating");
+		String review = request.getParameter("review");
+		String date = request.getParameter("date");
 		
-		isTrue = userDBUtil.insertUser(userName,password, email, role);
+		isTrue = reviewDBUtil.updateReview(revid, productId, userId, rating, review, date);
 		
 		if(isTrue==true) {
 			RequestDispatcher dis = request.getRequestDispatcher("sucess.jsp");

@@ -1,6 +1,7 @@
 package model;
 import dao.DBConnect;
 
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -77,5 +78,28 @@ public class userDBUtil {
 		return isSuccess;
 	}
 	
+	public static boolean updateUser(String id,	String userName, String password, String email,	String role) {
+		
+			try {
+			
+			//db connection
+			
+			con = DBConnect.getConnection();
+			stat = con.createStatement();
+			
+			String sql = "UPDATE users SET  userName = '"+userName+"', password = '"+password+"', email = '"+email+"' WHERE user_id = '"+id+"'";
+			int rs = stat.executeUpdate(sql);
+			
+			if(rs>0) {
+				isSuccess = true;
+			}else {
+				isSuccess = false;
+			}
+		
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		return isSuccess;
+	}
 
 }
