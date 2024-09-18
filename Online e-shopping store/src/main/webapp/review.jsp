@@ -37,8 +37,22 @@
 		<c:param name="date" value="${date}"/>
 	</c:url>
 	
+	<c:url value="deleteReview.jsp" var="deleteReview">
+		<c:param name="revid" value="${revid}"/>
+		<c:param name="pid" value="${pid}"/>
+		<c:param name="uid" value="${uid}"/>
+		<c:param name="rating" value="${rating}"/>
+		<c:param name="reviewtxt" value="${reviewtxt}"/>
+		<c:param name="date" value="${date}"/>
+	</c:url>
+	
 	<a href="${updateReview}">
 	<input type="button" name="update" value="update">
+	</a>
+	
+	<br><br>
+	<a href="${deleteReview}">
+	<input type="button" name="delete" value="delete">
 	</a>
 
 </body>

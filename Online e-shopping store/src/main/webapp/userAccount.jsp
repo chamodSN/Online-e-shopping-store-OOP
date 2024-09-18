@@ -36,6 +36,19 @@
 	<input type="button" name="update" value="update">
 </a>
 
+<c:url value="deleteProfile.jsp" var="deleteProfile">
+	<c:param name="userId" value="${userId}"/>
+	<c:param name="userName" value="${userName}"/>
+	<c:param name="password" value="${password}"/>
+	<c:param name="email" value="${email}"/>
+	<c:param name="role" value="${role}"/>
+</c:url>
+
+<a href="${deleteProfile}">
+	<input type="button" name="delete" value="delete">
+</a>
+
+
 
 </body>
 </html>

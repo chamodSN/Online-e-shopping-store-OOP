@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.user;
 import model.userDBUtil;
 
 
@@ -30,7 +32,12 @@ public class updateProfileControllerServlet extends HttpServlet {
 		isTrue = userDBUtil.updateUser(id, userName, password, email, role);
 		
 		if(isTrue==true) {
-			RequestDispatcher dis = request.getRequestDispatcher("sucess.jsp");
+			
+			List<user> userDetails = userDBUtil.getUserDetails(id);
+			
+			request.setAttribute("userDetails", userDetails);
+			
+			RequestDispatcher dis = request.getRequestDispatcher("userAccount.jsp");
 			dis.forward(request, response);
 		}else {
 			RequestDispatcher dis2 = request.getRequestDispatcher("unsucess.jsp");

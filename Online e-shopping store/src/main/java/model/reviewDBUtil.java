@@ -114,5 +114,81 @@ public class reviewDBUtil {
 				}
 				return isSuccess;
 	}
+	
+public static List<review> getReviewDetails(String reviewId){
+		
+		int convertedID = Integer.parseInt(reviewId);
+	
+		ArrayList<review> review = new ArrayList<>();
+		
+		//db connection
+		String url = "jdbc:mysql://localhost:3306/test";
+		String user = "root";
+		String password = "admin123";
+		
+		try {
+			
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection(url, user, password);
+			Statement stmt = con.createStatement();
+			
+			String sql = "SELECT * FROM reviews WHERE review_id = '"+convertedID+"'";
+			
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				int revId = rs.getInt(1);
+				int productID = rs.getInt(2);
+				int userID = rs.getInt(3);
+				int rate = rs.getInt(4);
+				String revTxt = rs.getString(5);
+				String date = rs.getString(6);
+				
+				review r = new review(revId, productID, userID, rate, revTxt, date);
+				
+				review.add(r);
+			}
+					
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return review;
+		
+	}
+
+	public static boolean deleteReview(String id) {
+		
+		int convertedID = Integer.parseInt(id);
+		
+		//db connection
+		String url = "jdbc:mysql://localhost:3306/test";
+		String user = "root";
+		String password = "admin123";
+		
+		try {
+			
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection(url, user, password);
+			Statement stmt = con.createStatement();
+			
+			String sql = "DELETE FROM reviews WHERE review_id = '"+convertedID+"'";
+			
+			int rs = stmt.executeUpdate(sql);
+			
+			if(rs > 0) {
+				isSuccess = true;
+			}else {
+				isSuccess = false;
+			}	
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return isSuccess;
+		
+	}
 
 }

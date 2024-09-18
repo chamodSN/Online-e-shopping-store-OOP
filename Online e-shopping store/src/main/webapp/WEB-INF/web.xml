@@ -60,4 +60,13 @@
 		<url-pattern>/updateReview</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>deleteReview</servlet-name>
+		<servlet-class>controller.deleteReviewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>deleteReview</servlet-name>
+		<url-pattern>/deleteReview</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

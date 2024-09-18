@@ -101,5 +101,46 @@ public class userDBUtil {
 			}
 		return isSuccess;
 	}
+	
+	public static List<user> getUserDetails(String id){
+		
+		int convertedID = Integer.parseInt(id);
+		
+		ArrayList<user> user = new ArrayList<>();
+		
+		try {
+			//db connection
+			
+			con = DBConnect.getConnection();
+			stat = con.createStatement();
+			
+			String sql = "SELECT * FROM users WHERE user_id = '"+convertedID+"'";
+			
+			rs = stat.executeQuery(sql);
+			
+			while(rs.next()) {
+				int uId = rs.getInt(1);
+				String userName = rs.getString(2);
+				String password = rs.getString(3);
+				String email = rs.getString(4);
+				String role = rs.getString(5);
+				
+				//create object from user class
+				user u = new user(uId, userName, password, email, role);
+				
+				//pass the object to the user array list object
+				
+				user.add(u);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return user;
+	}
+	
+	
+	
 
 }
