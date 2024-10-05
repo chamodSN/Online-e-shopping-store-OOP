@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.Statement;
 
 public class userDBUtil {
@@ -15,9 +16,8 @@ public class userDBUtil {
 	private static Statement stat = null;
 	private static ResultSet rs = null;
 	
-	public static List<user> validate(String loginUserName, String loginPassword){
+	public static boolean validate(String loginUserName, String loginPassword){
 		
-		ArrayList<user> user = new ArrayList<>();
 		
 		try {
 			//db connection
@@ -30,28 +30,19 @@ public class userDBUtil {
 			rs = stat.executeQuery(sql);
 			
 			if(rs.next()) {
-				int id = rs.getInt(1);
-				String userName = rs.getString(2);
-				String password = rs.getString(3);
-				String email = rs.getString(4);
-				String role = rs.getString(5);
-				
-				//create object from user class
-				user u = new user(id, userName, password, email, role);
-				
-				//pass the object to the user array list object
-				
-				user.add(u);
+				isSuccess = true;
+			}else {
+				isSuccess = false;
 			}
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		return user;
+		return isSuccess;
 	}
 	
-	public static boolean insertUser(String userName,String password, String email, String role) {
+	public static boolean insertUser(String userName,String password, String email, String image) {
 		
 		isSuccess=false;
 		
@@ -62,7 +53,7 @@ public class userDBUtil {
 			con = DBConnect.getConnection();
 			stat = con.createStatement();
 			
-			String sql = "INSERT INTO users VALUES (0,'"+userName+"', '"+password+"', '"+email+"', '"+role+"')";
+			String sql = "INSERT INTO users VALUES (0,'"+userName+"', '"+password+"', '"+email+"', '"+image+"')";
 			
 			int rs = stat.executeUpdate(sql);
 			
@@ -102,9 +93,7 @@ public class userDBUtil {
 		return isSuccess;
 	}
 	
-	public static List<user> getUserDetails(String id){
-		
-		int convertedID = Integer.parseInt(id);
+	public static List<user> getUserDetails(String uName){
 		
 		ArrayList<user> user = new ArrayList<>();
 		
@@ -114,7 +103,7 @@ public class userDBUtil {
 			con = DBConnect.getConnection();
 			stat = con.createStatement();
 			
-			String sql = "SELECT * FROM users WHERE user_id = '"+convertedID+"'";
+			String sql = "SELECT * FROM users WHERE username = '"+uName+"'";
 			
 			rs = stat.executeQuery(sql);
 			
@@ -123,10 +112,10 @@ public class userDBUtil {
 				String userName = rs.getString(2);
 				String password = rs.getString(3);
 				String email = rs.getString(4);
-				String role = rs.getString(5);
+				String image = rs.getString(5);
 				
 				//create object from user class
-				user u = new user(uId, userName, password, email, role);
+				user u = new user(uId, userName, password, email, image);
 				
 				//pass the object to the user array list object
 				
@@ -140,7 +129,37 @@ public class userDBUtil {
 		return user;
 	}
 	
-	
+	public static boolean deleteUser(String id) {
+		
+		int convertedID = Integer.parseInt(id);
+		
+		//db connection
+		String url = "jdbc:mysql://localhost:3306/test";
+		String user = "root";
+		String password = "admin123";
+		
+		try {
+			
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection(url, user, password);
+			Statement stmt = con.createStatement();
+			
+			String sql = "DELETE FROM users WHERE user_id = '"+convertedID+"'";
+			
+			int rs = stmt.executeUpdate(sql);
+			
+			if(rs > 0) {
+				isSuccess = true;
+			}else {
+				isSuccess = false;
+			}	
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return isSuccess;
+		
+	}
 	
 
 }

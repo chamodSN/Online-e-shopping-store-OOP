@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.user;
 import model.userDBUtil;
@@ -20,20 +23,42 @@ public class loginControllerServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		
 		String userName = request.getParameter("loginUserName");
 		String password = request.getParameter("loginPassword");
+		boolean isTrue;
 		
 		try {
-			List<user> userDetails = userDBUtil.validate(userName, password);
 			
-			request.setAttribute("userDetails", userDetails);
+			HttpSession session = request.getSession();
+			
+			isTrue = userDBUtil.validate(userName, password);
+			
+			if(isTrue==true) {
+				List<user> userDetails = userDBUtil.getUserDetails(userName);
+				
+				request.setAttribute("userDetails", userDetails);
+				
+				session.setAttribute("userSessions", userDetails);
+				
+				RequestDispatcher dis = request.getRequestDispatcher("userAccount.jsp");
+				dis.forward(request, response);
+
+				
+			}else {
+				out.println("<script type='text/javascript'>");
+				out.println("alert('Your user name or password is incorrect');");
+				out.println("location='login.jsp'");
+				out.println("</script>");
+			}
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		RequestDispatcher dis = request.getRequestDispatcher("userAccount.jsp");
-		dis.forward(request, response);
+		
 	}
 
 }

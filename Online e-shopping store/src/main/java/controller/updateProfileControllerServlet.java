@@ -33,7 +33,7 @@ public class updateProfileControllerServlet extends HttpServlet {
 		
 		if(isTrue==true) {
 			
-			List<user> userDetails = userDBUtil.getUserDetails(id);
+			List<user> userDetails = userDBUtil.getUserDetails(userName);
 			
 			request.setAttribute("userDetails", userDetails);
 			

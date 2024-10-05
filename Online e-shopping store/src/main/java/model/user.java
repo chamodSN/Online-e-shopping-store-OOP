@@ -5,15 +5,15 @@ public class user {
 	private String userName;
 	private String password;
 	private String email;
-	private String role;
+	private String profile_image;
 	
 	
-	public user(int id, String userName, String password, String email, String role) {
+	public user(int id, String userName, String password, String email, String profile_image) {
 		this.user_id = id;
 		this.userName = userName;
 		this.password = password;
 		this.email = email;
-		this.role = role;
+		this.profile_image = profile_image;
 	}
 
 
@@ -34,9 +34,9 @@ public class user {
 		return email;
 	}
 
-	public String getRole() {
-		return role;
+	public String getProfile_image() {
+		return profile_image;
 	}
-
+	
 
 }
