@@ -1,7 +1,7 @@
 package model;
 
 public class order {
-	
+
 	private int orderId;
 	private int quantity;
 	private String country;
@@ -12,10 +12,10 @@ public class order {
 	private String customerName;
 	private String contactNumber;
 	private int productId;
+	private String productName;
 
-	
-	
-	public order(int orderId, int quantity, String country, String district, String shippingAddress, double totalPrice,int customerId, String customerName, String contactNumber, int productId) {
+	public order(int orderId, int quantity, String country, String district, String shippingAddress, double totalPrice,
+			int customerId, String customerName, String contactNumber, int productId, String productName) {
 		this.orderId = orderId;
 		this.quantity = quantity;
 		this.country = country;
@@ -26,8 +26,8 @@ public class order {
 		this.customerName = customerName;
 		this.contactNumber = contactNumber;
 		this.productId = productId;
-		
-		
+		this.productName = productName;
+
 	}
 
 	public int getOrderId() {
@@ -49,7 +49,7 @@ public class order {
 	public String getShippingAddress() {
 		return shippingAddress;
 	}
-	
+
 	public double getTotalPrice() {
 		return totalPrice;
 	}
@@ -61,6 +61,7 @@ public class order {
 	public String getCustomerName() {
 		return customerName;
 	}
+
 	public String getContactNumber() {
 		return contactNumber;
 	}
@@ -69,10 +70,8 @@ public class order {
 		return productId;
 	}
 
-
-
-	
-	
-	
+	public String getProductName() {
+		return productName;
+	}
 
 }

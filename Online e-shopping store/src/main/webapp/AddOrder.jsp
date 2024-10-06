@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +12,25 @@
 
 	<%@ include file="includes/navbar.jsp"%>
 
+	<c:if test="${not empty userSessions }">
+		<h1>Name:${userSessions[0].userName }</h1>
+		<h1>Id: ${userSessions[0].user_id}</h1>
+	</c:if>
+
+	<%
+	String productId = request.getParameter("productId");
+	String price = request.getParameter("price");
+	String pName = request.getParameter("proName");
+	%>
+
+
 	<div class="container mt-5">
 		<h2 class="text-center">Add Order</h2>
 		<form action="addOrder" method="POST" class="w-50 mx-auto">
+			<input type="hidden" name="prId" value="<%= productId %>"> <input
+				type="hidden" name="userId" value="${userSessions[0].user_id}">
+				<input type="hidden" name="unitPrice" value="<%= price %>">
+				<input type="hidden" name="prName" value="<%= pName %>">
 			<div class="mb-3">
 				<label for="customerName" class="form-label">Customer Name</label> <input
 					type="text" class="form-control" name="customerName" required>
@@ -24,7 +41,7 @@
 			</div>
 			<div class="mb-3">
 				<label for="country" class="form-label">Country</label> <input
-					type="text" class="form-control" name="country"required">
+					type="text" class="form-control" name="country"required>
 			</div>
 
 			<div class="mb-3">

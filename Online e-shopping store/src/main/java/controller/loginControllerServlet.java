@@ -43,6 +43,10 @@ public class loginControllerServlet extends HttpServlet {
 				
 				session.setAttribute("userSessions", userDetails);
 				
+				 user loggedInUser = userDetails.get(0);
+                 session.setAttribute("user_id", loggedInUser.getUser_id());
+                 session.setAttribute("userName", loggedInUser.getUserName());
+				
 				RequestDispatcher dis = request.getRequestDispatcher("userAccount.jsp");
 				dis.forward(request, response);
 

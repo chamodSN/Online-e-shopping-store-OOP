@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.product;
 import model.productDBUtil;
+import model.review;
+import model.reviewDBUtil;
 
 @WebServlet("/viewProductServlet")
 public class viewProductServlet extends HttpServlet {
@@ -25,6 +27,9 @@ public class viewProductServlet extends HttpServlet {
 			
 			List<product> productData = productDBUtil.validate(id);
 			request.setAttribute("productData", productData);
+			
+			List<review> reviewData = reviewDBUtil.getReviews(id); 
+            request.setAttribute("reviewData", reviewData);
 			
 		}catch( Exception e){
 			e.printStackTrace();

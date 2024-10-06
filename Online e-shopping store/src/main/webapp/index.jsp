@@ -23,6 +23,7 @@ List<product> products = productDBUtil.getProductDetails();
 						
 	<c:if test="${not empty userSessions }">
 		<h1>Name:${userSessions[0].userName }</h1>
+		<h1>Id:${userSessions[0].user_id }</h1>
 	</c:if>
 
 	<div class="container">

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.reviewDBUtil;
 
 
+
 @WebServlet("/addReviewServlet")
 public class addReviewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,8 +24,13 @@ public class addReviewServlet extends HttpServlet {
 		
 		String rateNumber = request.getParameter("rating");
 		String rateText = request.getParameter("review");
-		String productId = "101";
-		String userId = "102";
+		String productId = request.getParameter("proId");
+		String userId = request.getParameter("userId");
+		
+		System.out.println("Rating: " + rateNumber);
+	    System.out.println("Review: " + rateText);
+	    System.out.println("Product ID: " + productId);
+	    System.out.println("User ID: " + userId);
 		
 		boolean isTrue;
 		

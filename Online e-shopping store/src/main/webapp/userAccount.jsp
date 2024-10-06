@@ -19,8 +19,12 @@ table {
 <body>
 
 	<%@ include file="includes/navbar.jsp"%>
+<c:choose>
+	<c:when  test="${not empty userSessions }">
+		<h1>Name:${userSessions[0].userName }</h1>
+		<h1>Id:${userSessions[0].user_id }</h1>
 
-	<c:forEach var="user" items="${userDetails}">
+	<c:forEach var="user" items="${sessionScope.userSessions}">
 
 		<c:set var="userId" value="${user.user_id}" />
 		<c:set var="userName" value="${user.userName}" />
@@ -32,7 +36,7 @@ table {
 			<h2 class="text-center mb-4">USER INFO</h2>
 
 			<div class="text-center mb-4">
-				<img src="profileImages/${user.profile_image}" 
+				<img src="profileImages/${user.profile_image}"
 					alt="${user.userName}" class="rounded-circle mx-auto d-block"
 					style="width: 200px; height: 200px; object-fit: cover;">
 			</div>
@@ -94,10 +98,22 @@ table {
 		</a>
 	</div>
 	<div class="text-center">
-		<button type="submit" class="btn btn-primary text-cener mb-2 mt-3">LOG
-			OUT</button>
-		<br>
+		<form action="logout" method="post">
+			<button type="submit" class="btn btn-primary text-center mb-2 mt-3">LOG
+				OUT</button>
+		</form>
 	</div>
-
+	
+	</c:when >
+	
+	<c:otherwise>
+            <div class="container text-center mt-5">
+                <h2>Please log in to access your account</h2>
+                <a href="login.jsp">
+                    <button class="btn btn-primary">Log In</button>
+                </a>
+            </div>
+        </c:otherwise>
+</c:choose>
 </body>
 </html>

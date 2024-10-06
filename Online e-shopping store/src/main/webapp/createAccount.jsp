@@ -11,7 +11,8 @@
 	<%@ include file="includes/navbar.jsp"%>
 	<div class="container mt-5">
 		<h2 class="text-center">CREATE USER ACCOUNT</h2>
-		<form action="register" method="POST" enctype="multipart/form-data" class="w-50 mx-auto">
+		<form action="register" method="POST" enctype="multipart/form-data"
+			class="w-50 mx-auto" onsubmit="return checkPassword()">
 			<div class="mb-3 mt-3 w-50 mx-auto">
 				<label for="exampleInputUserName">User Name</label> <input
 					type="text" class="form-control" name="userName"
@@ -19,15 +20,21 @@
 			</div>
 
 			<div class="mb-3 mt-3 w-50 mx-auto">
-				<label for="exampleInputPassword1">Password</label> <input
-					type="password" class="form-control" name="password"
+				<label for="inputPassword">Password</label> <input type="password"
+					class="form-control" id="pw" name="password"
 					placeholder="Enter Password" required>
+			</div>
+
+			<div class="mb-3 mt-3 w-50 mx-auto">
+				<label for="inputPassword">Re Enter Password</label> <input
+					type="password" class="form-control" id="rpw" name="reRassword"
+					placeholder="Re Enter Password" required>
 			</div>
 
 			<div class="mb-3 mt-3 w-50 mx-auto">
 				<label for="exampleInputEmail">Email</label> <input type="email"
 					class="form-control" name="email" placeholder="Enter Email"
-					required>
+					pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
 			</div>
 
 			<div class="mb-3 mt-3 w-50 mx-auto">
@@ -41,5 +48,6 @@
 		</form>
 
 	</div>
+	<script src="js/user.js"></script>
 </body>
 </html>
