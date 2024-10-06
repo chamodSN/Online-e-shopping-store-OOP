@@ -9,9 +9,10 @@
     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active"><a class="nav-link" href="index.jsp">Home</a></li>
-        <li class="nav-item active"><a class="nav-link" href="products.jsp">Products</a></li>
+        <li class="nav-item active"><a class="nav-link" href="Products_Category.jsp">Products</a></li>
         <li class="nav-item active"><a class="nav-link" href="cart.jsp">Cart</a></li>
         <li class="nav-item active"><a class="nav-link" href="orders.jsp">Orders</a></li>
+        <li class="nav-item active"><a class="nav-link" href="reviews.jsp">Reviews</a></li>
         <li class="nav-item active"><a class="nav-link" href="userAccount.jsp">Account</a></li>
       </ul>
       

@@ -33,7 +33,7 @@ public class deleteProductServlet extends HttpServlet {
         } else {
         	List<product> productData =productDBUtil.getProductDetails(productId);
         	request.setAttribute("productData", productData);
-            RequestDispatcher dis2 = request.getRequestDispatcher("product.jsp");
+            RequestDispatcher dis2 = request.getRequestDispatcher("admin_product.jsp");
             dis2.forward(request, response);
         }
 		

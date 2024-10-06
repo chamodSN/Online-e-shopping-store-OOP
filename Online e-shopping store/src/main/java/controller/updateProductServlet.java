@@ -36,7 +36,7 @@ public class updateProductServlet extends HttpServlet {
 		if (isTrue == true) {
 			List<product> productData =productDBUtil.getProductDetails(prId);
 			request.setAttribute("productData", productData);
-            RequestDispatcher dis = request.getRequestDispatcher("product.jsp");
+            RequestDispatcher dis = request.getRequestDispatcher("admin_product.jsp");
             dis.forward(request, response);
         } else {
             RequestDispatcher dis2 = request.getRequestDispatcher("unsucess.jsp");

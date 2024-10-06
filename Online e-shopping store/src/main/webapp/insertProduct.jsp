@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
+	<%@ include file="includes/admin_navbar.jsp"%>
 	<div class="container mt-5">
 		<h2 class="text-center">Insert Product</h2>
 		<form action="insertProduct" method="POST"
@@ -72,5 +73,6 @@
 			</div>
 		</form>
 	</div>
+	<%@ include file="includes/footer.jsp"%>
 </body>
 </html>

@@ -31,14 +31,17 @@ public class addProductServlet extends HttpServlet {
 		int stockQuantity = Integer.parseInt(request.getParameter("stockQuantity"));
 		Part part = request.getPart("image");
 		String image = part.getSubmittedFileName();
+		String productColour = request.getParameter("color");
+		int prWarranty = Integer.parseInt(request.getParameter("warranty"));
 		
-		isTrue = productDBUtil.insertProduct(productName, description, price, category, stockQuantity, image);
+		isTrue = productDBUtil.insertProduct(productName, description, price, category, stockQuantity, image, productColour, prWarranty);
+
 		
 		if (isTrue == true) {
-            RequestDispatcher dis = request.getRequestDispatcher("success.jsp");
+            RequestDispatcher dis = request.getRequestDispatcher("sucess.jsp");
             dis.forward(request, response);
         } else {
-            RequestDispatcher dis2 = request.getRequestDispatcher("unsuccess.jsp");
+            RequestDispatcher dis2 = request.getRequestDispatcher("unsucess.jsp");
             dis2.forward(request, response);
         }
 		

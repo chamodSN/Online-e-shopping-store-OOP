@@ -60,8 +60,8 @@ public class orderDBUtil {
 	}
 
 	public static boolean insertOrder(String customerName, int quantity, String country, String district,
-			String contactNumber, String shippingAddress, double totalPrice, int productId, int customerId,
-			String productName) {
+            String contactNumber, String shippingAddress, double totalPrice, int productId, 
+            int customerId, String productName) {
 
 		// db connection
 		String url = "jdbc:mysql://localhost:3306/test";

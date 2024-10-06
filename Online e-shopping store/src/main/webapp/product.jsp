@@ -130,37 +130,6 @@
 		</div>
 	</div>
 
-
-
-	<c:url value="updateproduct.jsp" var="updateproduct">
-		<c:param name="pid" value="${pid}" />
-		<c:param name="pname" value="${pname}" />
-		<c:param name="pdescription" value="${pdescription}" />
-		<c:param name="pprice" value="${pprice}" />
-		<c:param name="pcategory" value="${pcategory}" />
-		<c:param name="pquantity" value="${pquantity}" />
-		<c:param name="pcolor" value="${pcolor}" />
-		<c:param name="pwar" value="${pwar}" />
-	</c:url>
-
-	<c:url value="deleteproduct.jsp" var="deleteproduct">
-		<c:param name="pid" value="${pid}" />
-		<c:param name="pname" value="${pname}" />
-		<c:param name="pdescription" value="${pdescription}" />
-		<c:param name="pprice" value="${pprice}" />
-		<c:param name="pcategory" value="${pcategory}" />
-		<c:param name="pimg" value="${pimg}" />
-		<c:param name="pcolor" value="${pcolor}" />
-		<c:param name="pwar" value="${pwar}" />
-	</c:url>
-
-	<div class="container text-center my-4">
-		<a href="${updateproduct}"><input type="button" name="update"
-			value="Update" class="btn btn-primary mx-3"></a> <a
-			href="${deleteproduct}"><input type="button" name="delete"
-			value="Delete" class="btn btn-primary mx-3"></a>
-	</div>
-
 	<%@ include file="includes/footer.jsp"%>
 </body>
 </html>
