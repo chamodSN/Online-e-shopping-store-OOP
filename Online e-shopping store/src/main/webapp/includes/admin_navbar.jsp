@@ -8,8 +8,7 @@
 
     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active"><a class="nav-link" href="index.jsp">Home</a></li>
-        <li class="nav-item active"><a class="nav-link" href="products.jsp">Products</a></li>
+        <li class="nav-item active"><a class="nav-link" href="Products_Category_Admin.jsp">Products</a></li>
         <li class="nav-item active"><a class="nav-link" href="insertProduct.jsp">Insert Product</a></li>
         <li class="nav-item active"><a class="nav-link" href="login.jsp">Login</a></li>
         <li class="nav-item active"><a class="nav-link" href="userAccount.jsp">Account</a></li>

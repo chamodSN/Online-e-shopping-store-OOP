@@ -1,7 +1,7 @@
 package controller;
 
 import java.io.IOException;
-
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,6 +22,9 @@ public class registerControllerServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		
 		boolean isTrue;
 		
 		String userName = request.getParameter("userName");
@@ -33,11 +36,15 @@ public class registerControllerServlet extends HttpServlet {
 		isTrue = userDBUtil.insertUser(userName,password, email, imageUrl);
 		
 		if(isTrue==true) {
-			RequestDispatcher dis = request.getRequestDispatcher("sucess.jsp");
-			dis.forward(request, response);
+			out.println("<script type='text/javascript'>");
+			out.println("alert('User Account Created Sucessfully');");
+			out.println("location='login.jsp'");
+			out.println("</script>");
 		}else {
-			RequestDispatcher dis2 = request.getRequestDispatcher("unsucess.jsp");
-			dis2.forward(request, response);
+			out.println("<script type='text/javascript'>");
+			out.println("alert('Failed Creating User Account');");
+			out.println("location='login.jsp'");
+			out.println("</script>");
 		}
 	}
 

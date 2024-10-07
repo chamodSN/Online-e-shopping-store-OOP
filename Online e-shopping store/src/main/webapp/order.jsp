@@ -122,7 +122,7 @@ table {
 	<div class="text-center">
 		<a href="${deleteOrder}">
 
-			<button type="submit" class="btn btn-primary text-cener mb-2 mt-3">DELETE
+			<button type="submit" class="btn btn-danger text-cener mb-2 mt-3">DELETE
 				ORDER</button> <br>
 		</a>
 	</div>
