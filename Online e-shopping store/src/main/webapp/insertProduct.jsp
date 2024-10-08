@@ -12,7 +12,7 @@
 	<div class="container mt-5">
 		<h2 class="text-center">Insert Product</h2>
 		<form action="insertProduct" method="POST"
-			enctype="multipart/form-data" class="w-50 mx-auto">
+			enctype="multipart/form-data" class="w-50 mx-auto" onsubmit = "return checkDescription(event);">
 			<div class="mb-3">
 				<label for="productName" class="form-label">Product Name</label> <input
 					type="text" class="form-control" name="productName"
@@ -22,7 +22,7 @@
 			<div class="mb-3">
 				<label for="description" class="form-label">Description</label>
 				<textarea name="description" class="form-control" rows="4"
-					placeholder="Enter product description" required></textarea>
+					placeholder="Enter product description" id ="description" required></textarea>
 			</div>
 
 			<div class="mb-3">
@@ -74,5 +74,8 @@
 		</form>
 	</div>
 	<%@ include file="includes/footer.jsp"%>
+	
+	<script src="js/description.js"></script>
+	
 </body>
 </html>

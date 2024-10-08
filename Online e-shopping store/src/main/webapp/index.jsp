@@ -33,7 +33,7 @@ List<product> products = productDBUtil.getProductDetails();
 			if (products != null && !products.isEmpty()) {
 				for (product p : products) {
 			%>
-			<div class="col-md-3 my-3">
+			<div class="col-md-3 my-3 product-card">
 				<div class="card w-100">
 					<img class="card-img-top" src="images/<%=p.getImage()%>"
 						alt="Card image cap"
@@ -65,5 +65,7 @@ List<product> products = productDBUtil.getProductDetails();
 	</div>
 
 	<%@ include file="includes/footer.jsp"%>
+	
+	<script src="js/search.js"></script>
 </body>
 </html>

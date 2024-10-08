@@ -1,4 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+<script src="js/search.js"></script>
+
   <div class="container">
     <a class="navbar-brand" href="index.jsp">Nexify</a>
     
@@ -19,7 +22,7 @@
     </div>
     <div class="Container mr-auto">
       <form class="d-flex">
-        <input class="form-control me-2" type="text" placeholder="Search">
+        <input class="form-control me-2" type="text" placeholder="Search" id="searchinput">
         <button class="btn btn-primary" type="button">Search</button>
       </form>
       </div>
