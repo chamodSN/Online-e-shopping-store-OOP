@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
-	<%@ include file="includes/navbar.jsp"%>
+	<%@ include file="includes/admin_navbar.jsp"%>
 
 	<%
 	int productId = Integer.parseInt(request.getParameter("pid"));

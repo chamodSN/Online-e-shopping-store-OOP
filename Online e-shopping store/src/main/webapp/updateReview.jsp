@@ -23,24 +23,9 @@
 		<h2 class="text-center">Review</h2>
 		<form action="updateReview" method="POST" class="w-50 mx-auto">
 			<div class="mb-3">
-				<label for="orderId" class="form-label">Review ID</label> <input
-					type="text" class="form-control" name="orderId" value="<%=revid%>"
+				<label for="reviewId" class="form-label">Review ID</label> <input
+					type="text" class="form-control" name="reviewId" value="<%=revid%>"
 					readonly>
-			</div>
-			<div class="mb-3">
-				<label for="customerId" class="form-label">Product ID</label> <input
-					type="text" class="form-control" name="customerId"
-					value="<%=productId%>" readonly>
-			</div>
-			<div class="mb-3">
-				<label for="cname" class="form-label">User ID</label> <input
-					type="text" class="form-control" name="cname" value="<%=userId%>"
-					readonly>
-			</div>
-			<div class="mb-3">
-				<label for="contactNum" class="form-label">Rating</label> <input
-					type="text" class="form-control" name="contactNum"
-					value="<%=rating%>" readonly>
 			</div>
 			<div class="mb-3">
 				<label for="productId" class="form-label">Product ID</label> <input
@@ -48,12 +33,22 @@
 					value="<%=productId%>" readonly>
 			</div>
 			<div class="mb-3">
-				<label for="quantity" class="form-label">Review</label>
-				<textarea class="form-control" name="quantity"><%=review%></textarea>
+				<label for="userId" class="form-label">User ID</label> <input
+					type="text" class="form-control" name="userId" value="<%=userId%>"
+					readonly>
 			</div>
 			<div class="mb-3">
-				<label for="totalPrice" class="form-label">Date</label> <input
-					type="text" class="form-control" name="totalPrice"
+				<label for="rating" class="form-label">Rating</label> <input
+					type="text" class="form-control" name="rating"
+					value="<%=rating%>" readonly>
+			</div>
+			<div class="mb-3">
+				<label for="review" class="form-label">Review</label>
+				<textarea class="form-control" name="review"><%=review%></textarea>
+			</div>
+			<div class="mb-3">
+				<label for="date" class="form-label">Date</label> <input
+					type="text" class="form-control" name="date"
 					value="<%=date%>" readonly>
 			</div>
 			<div class="text-center">

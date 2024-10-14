@@ -24,7 +24,7 @@
 
 		<form action="deleteUser" method="POST">
 			<div class="text-center mb-4">
-				<img src="profileImages/<%=url%>>"
+				<img src="profileImages/<%=url%>"
 					alt="<%=userName%>" class="rounded-circle mx-auto d-block"
 					style="width: 200px; height: 200px; object-fit: cover;">
 			</div>

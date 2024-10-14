@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Delete Product</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
+	<%@ include file="includes/admin_navbar.jsp"%>
 <%
 		int productId = Integer.parseInt(request.getParameter("pid"));
 		String productName = request.getParameter("pname");
@@ -14,18 +16,70 @@
 		double price = Double.parseDouble(request.getParameter("pprice"));
 		String category = request.getParameter("pcategory");
 		int stockQuantity = Integer.parseInt(request.getParameter("pquantity"));
+		String color = request.getParameter("pcolor");
+		int warranty = Integer.parseInt(request.getParameter("pwar"));
 	%>
-
- <form action="deleteProduct" method="POST">
-		
-		<input type="number" name="productId" value="<%=productId %>" readonly>
-		<input type="text" name="productName" value="<%=productName %>" readonly>
-	    <input type="text" name="description" value="<%=description %>" readonly>
-	    <input type="text" name="price" value="<%=price %>" readonly>
-		<input type="text" name="category" value="<%=category %>" readonly>
-		<input type="number" name="stockQuantity" value="<%=stockQuantity %>" readonly>
 	
-		<input type="submit" name="delete" value="delete">
-	</form>
+	
+		<div class="container mt-5">
+		<h2 class="text-center">Delete Product</h2>
+		<form action="deleteProduct" method="POST"class="w-50 mx-auto">
+			<div class="mb-3">
+				<label for="proId" class="form-label">Product ID</label> <input
+					type="number" class="form-control" name="proId"
+					value="<%=productId%>" readonly>
+
+			</div>
+			<div class="mb-3">
+				<label for="productName" class="form-label">Product Name</label> <input
+					type="text" class="form-control" name="productName"
+					value="<%=productName%>" readonly>
+			</div>
+
+			<div class="mb-3">
+				<label for="description" class="form-label">Description</label>
+				<textarea name="description" class="form-control" rows="4" readonly> <%=description%> </textarea> 
+			</div>
+
+
+			<div class="mb-3">
+				<label for="price" class="form-label">Price</label> <input
+					type="text" class="form-control" name="price" value="<%=price%> "readonly>
+			</div>
+
+			<div class="mb-3">
+				<label for="category" class="form-label">Category</label> <input
+					type="text" class="form-control" name="category"
+					value="<%=category%>" readonly>
+			</div>
+
+			<div class="mb-3">
+				<label for="color" class="form-label">Color</label> <input
+					type="text" class="form-control" name="color" value="<%=color%>">
+			</div>
+
+			<div class="mb-3">
+				<label for="warranty" class="form-label">Warranty (Months)</label> <input
+					type="number" class="form-control" name="warranty"
+					value="<%=warranty%>">
+			</div>
+
+
+			<div class="mb-3">
+				<label for="stockQuantity" class="form-label">Stock Quantity</label>
+				<input type="number" class="form-control" name="stockQuantity"
+					value="<%=stockQuantity%>" required>
+			</div>
+
+			<div class="text-center">
+				<input type="submit" class="btn btn-primary btn-lg btn-danger"
+					value="Delete Product">
+			</div>
+		</form>
+	</div>
+	
+	<%@ include file="includes/footer.jsp"%>
+</body>
+</html>
 </body>
 </html>

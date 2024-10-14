@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="model.productDBUtil"%>
+<%@ page import="com.model.utils.ProductDBUtil"%>
 <%@ page import="dao.DBConnect"%>
-<%@ page import="model.reviewDBUtil"%>
-<%@ page import="model.review"%>
+<%@ page import="com.model.utils.ReviewDBUtil"%>
+<%@ page import="com.model.entities.Review"%>
 <%@ page import="java.util.*"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -60,7 +61,7 @@
 							<p class="card-text">
 								<b>Warranty:</b> ${product.warranty} Months
 							</p>
-							<a href="#"
+							<a href="AddToCartServlet?productId=${product.productId}"
 								class="btn btn-primary ${product.stockQuantity > 0 ? '' : 'disabled'}">
 								Add to Cart </a> <a
 								href="AddOrder.jsp?productId=${product.productId}&price=${product.price}&proName=${product.productName}"
@@ -80,10 +81,10 @@
 					<div class="card mb-3">
 						<div class="card-body">
 							<h5 class="card-title">Rating: ${reviews.rating}/5</h5>
-							<p class="card-text">${reviews.review_text}</p>
+							<p class="card-text">${reviews.reviewText}</p>
 							<p class="card-text">
 								<small class="text-muted">Reviewed on
-									${reviews.review_date}</small>
+									${reviews.reviewDate}</small>
 							</p>
 						</div>
 					</div>
@@ -111,7 +112,7 @@
 		<c:param name="pdescription" value="${pdescription}" />
 		<c:param name="pprice" value="${pprice}" />
 		<c:param name="pcategory" value="${pcategory}" />
-		<c:param name="pimg" value="${pimg}" />
+		<c:param name="pquantity" value="${pquantity}" />
 		<c:param name="pcolor" value="${pcolor}" />
 		<c:param name="pwar" value="${pwar}" />
 	</c:url>

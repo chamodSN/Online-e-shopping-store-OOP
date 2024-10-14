@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="model.productDBUtil"%>
+<%@ page import="com.model.utils.ProductDBUtil"%>
 <%@ page import="dao.DBConnect"%>
-<%@ page import="model.reviewDBUtil"%>
-<%@ page import="model.review"%>
+<%@ page import="com.model.utils.ReviewDBUtil"%>
+<%@ page import="com.model.entities.Review"%>
 <%@ page import="java.util.*"%>
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -60,7 +63,7 @@
 							<p class="card-text">
 								<b>Warranty:</b> ${product.warranty} Months
 							</p>
-							<a href="#"
+							<a href="AddToCartServlet?productId=${product.productId}"
 								class="btn btn-primary ${product.stockQuantity > 0 ? '' : 'disabled'}">
 								Add to Cart </a> <a
 								href="AddOrder.jsp?productId=${product.productId}&price=${product.price}&proName=${product.productName}"
@@ -74,13 +77,13 @@
 
 		<c:if test="${not empty userSessions}">
 			<h1>Name: ${userSessions[0].userName}</h1>
-			<h1>Id: ${userSessions[0].user_id}</h1>
+			<h1>Id: ${userSessions[0].userId}</h1>
 
 			<form action="addReview" method="POST" class="container my-5">
 				<h2 class="text-center">Add Your Review</h2>
 
 				<input type="hidden" name="userId"
-					value="${userSessions[0].user_id}"> <input type="hidden"
+					value="${userSessions[0].userId}"> <input type="hidden"
 					name="proId" value="${product.productId}">
 
 				<div class="form-group">
@@ -118,10 +121,10 @@
 					<div class="card mb-3">
 						<div class="card-body">
 							<h5 class="card-title">Rating: ${reviews.rating}/5</h5>
-							<p class="card-text">${reviews.review_text}</p>
+							<p class="card-text">${reviews.reviewText}</p>
 							<p class="card-text">
 								<small class="text-muted">Reviewed on
-									${reviews.review_date}</small>
+									${reviews.reviewDate}</small>
 							</p>
 						</div>
 					</div>

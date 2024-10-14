@@ -22,21 +22,21 @@ table {
 <c:choose>
 	<c:when  test="${not empty userSessions }">
 		<h1>Name:${userSessions[0].userName }</h1>
-		<h1>Id:${userSessions[0].user_id }</h1>
+		<h1>Id:${userSessions[0].userId }</h1>
 
 	<c:forEach var="user" items="${sessionScope.userSessions}">
 
-		<c:set var="userId" value="${user.user_id}" />
+		<c:set var="userId" value="${user.userId}" />
 		<c:set var="userName" value="${user.userName}" />
 		<c:set var="password" value="${user.password}" />
 		<c:set var="email" value="${user.email}" />
-		<c:set var="imageUrl" value="${user.profile_image}" />
+		<c:set var="imageUrl" value="${user.profileImage}" />
 
 		<div class="container mt-5 w-50">
 			<h2 class="text-center mb-4">USER INFO</h2>
 
 			<div class="text-center mb-4">
-				<img src="profileImages/${user.profile_image}"
+				<img src="profileImages/${user.profileImage}"
 					alt="${user.userName}" class="rounded-circle mx-auto d-block"
 					style="width: 200px; height: 200px; object-fit: cover;">
 			</div>
@@ -44,7 +44,7 @@ table {
 			<table class="table">
 				<tr class="table-primary text-center">
 					<td>USER ID</td>
-					<td>${user.user_id}</td>
+					<td>${user.userId}</td>
 				</tr>
 
 				<tr class="table-primary text-center">

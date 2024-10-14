@@ -8,7 +8,7 @@
          
 	<servlet>
 		<servlet-name>login</servlet-name>
-		<servlet-class>controller.loginControllerServlet</servlet-class>
+		<servlet-class>com.controller.user.LoginServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>login</servlet-name>
@@ -17,7 +17,7 @@
 	
 	<servlet>
 		<servlet-name>logout</servlet-name>
-		<servlet-class>controller.LogoutServlet</servlet-class>
+		<servlet-class>com.controller.user.LogoutServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>logout</servlet-name>
@@ -26,7 +26,7 @@
 	
     <servlet>
 		<servlet-name>register</servlet-name>
-		<servlet-class>controller.registerControllerServlet</servlet-class>
+		<servlet-class>com.controller.user.RegisterControllerServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>register</servlet-name>
@@ -35,7 +35,7 @@
 	
 	<servlet>
 		<servlet-name>updateUser</servlet-name>
-		<servlet-class>controller.updateProfileControllerServlet</servlet-class>
+		<servlet-class>com.controller.user.UpdateUserServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>updateUser</servlet-name>
@@ -44,7 +44,7 @@
 	
 	<servlet>
 		<servlet-name>deleteUser</servlet-name>
-		<servlet-class>controller.deleteUserServlet</servlet-class>
+		<servlet-class>com.controller.user.DeleteUserServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>deleteUser</servlet-name>
@@ -53,7 +53,7 @@
 	
 	<servlet>
 		<servlet-name>addReview</servlet-name>
-		<servlet-class>controller.addReviewServlet</servlet-class>
+		<servlet-class>com.controller.review.AddReviewServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>addReview</servlet-name>
@@ -62,7 +62,7 @@
 	
 	<servlet>
 		<servlet-name>viewReview</servlet-name>
-		<servlet-class>controller.viewReviewServlet</servlet-class>
+		<servlet-class>com.controller.review.ViewReviewServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>viewReview</servlet-name>
@@ -71,7 +71,7 @@
 	
 	<servlet>
 		<servlet-name>updateReview</servlet-name>
-		<servlet-class>controller.updateReviewServlet</servlet-class>
+		<servlet-class>com.controller.review.UpdateReviewServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>updateReview</servlet-name>
@@ -80,7 +80,7 @@
 	
 	<servlet>
 		<servlet-name>deleteReview</servlet-name>
-		<servlet-class>controller.deleteReviewServlet</servlet-class>
+		<servlet-class>com.controller.review.DeleteReviewServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>deleteReview</servlet-name>
@@ -89,7 +89,7 @@
 	
 	<servlet>
 		<servlet-name>insertProduct</servlet-name>
-		<servlet-class>controller.addProductServlet</servlet-class>
+		<servlet-class>com.controller.product.AddProductServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>insertProduct</servlet-name>
@@ -98,7 +98,7 @@
 	
 	<servlet>
 		<servlet-name>viewProduct</servlet-name>
-		<servlet-class>controller.viewProductServlet</servlet-class>
+		<servlet-class>com.controller.product.ViewProductServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
     <servlet-name>viewProduct</servlet-name>
@@ -107,7 +107,7 @@
     
      <servlet>
 		<servlet-name>updateProduct</servlet-name>
-		<servlet-class>controller.updateProductServlet</servlet-class>
+		<servlet-class>com.controller.product.UpdateProductServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>updateProduct</servlet-name>
@@ -116,7 +116,7 @@
 	
 	<servlet>
 		<servlet-name>deleteProduct</servlet-name>
-		<servlet-class>controller.deleteProductServlet</servlet-class>
+		<servlet-class>com.controller.product.DeleteProductServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>deleteProduct</servlet-name>
@@ -124,7 +124,7 @@
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>addOrder</servlet-name>
-		<servlet-class>controller.addOrderServlet</servlet-class>
+		<servlet-class>com.controller.order.AddOrderServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>addOrder</servlet-name>
@@ -134,7 +134,7 @@
 	      
     <servlet>
 		<servlet-name>viewOrder</servlet-name>
-		<servlet-class>controller.viewOrderServlet</servlet-class>
+		<servlet-class>com.controller.order.ViewOrderServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>viewOrder</servlet-name>
@@ -143,7 +143,7 @@
 	
 	 <servlet>
 		<servlet-name>updateOrder</servlet-name>
-		<servlet-class>controller.updateOrderServlet</servlet-class>
+		<servlet-class>com.controller.order.UpdateOrderServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>updateOrder</servlet-name>
@@ -152,11 +152,11 @@
 	
 	 <servlet>
 		<servlet-name>deleteOrder</servlet-name>
-		<servlet-class>controller.deleteOrderServlet</servlet-class>
+		<servlet-class>com.controller.order.DeleteOrderServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>deleteOrder</servlet-name>
 		<url-pattern>/deleteOrder</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping>	
 	
 </web-app>

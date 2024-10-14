@@ -14,7 +14,7 @@
 
 	<c:if test="${not empty userSessions }">
 		<h1>Name:${userSessions[0].userName }</h1>
-		<h1>Id: ${userSessions[0].user_id}</h1>
+		<h1>Id: ${userSessions[0].userId}</h1>
 	</c:if>
 
 	<%
@@ -28,7 +28,7 @@
 		<h2 class="text-center">Add Order</h2>
 		<form action="addOrder" method="POST" class="w-50 mx-auto">
 			<input type="hidden" name="prId" value="<%= productId %>"> <input
-				type="hidden" name="userId" value="${userSessions[0].user_id}">
+				type="hidden" name="userId" value="${userSessions[0].userId}">
 				<input type="hidden" name="unitPrice" value="<%= price %>">
 				<input type="hidden" name="prName" value="<%= pName %>">
 			<div class="mb-3">

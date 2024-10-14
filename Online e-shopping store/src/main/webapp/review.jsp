@@ -22,12 +22,12 @@
     <%@ include file="includes/navbar.jsp"%>
     <c:forEach var="review" items="${revData}">
 
-        <c:set var="revid" value="${review.review_id}" />
-        <c:set var="pid" value="${review.product_id}" />
-        <c:set var="uid" value="${review.user_id}" />
+        <c:set var="revid" value="${review.reviewId}" />
+        <c:set var="pid" value="${review.productId}" />
+        <c:set var="uid" value="${review.userId}" />
         <c:set var="rating" value="${review.rating}" />
-        <c:set var="reviewtxt" value="${review.review_text}" />
-        <c:set var="date" value="${review.review_date}" />
+        <c:set var="reviewtxt" value="${review.reviewText}" />
+        <c:set var="date" value="${review.reviewDate}" />
 
         <div class="container mt-5 w-50">
             <h2 class="text-center mb-4">REVIEW INFO</h2>
@@ -35,21 +35,21 @@
             <table class="table">
                 <tr class="table-primary text-center">
                     <td>Review ID</td>
-                    <td>${review.review_id}</td>
+                    <td>${review.reviewId}</td>
                 </tr>
 
                 <tr class="table-primary text-center">
                     <td>Product ID</td>
-                    <td>${review.product_id}</td>
+                    <td>${review.productId}</td>
                 </tr>
 
                 <tr class="table-primary text-center">
                     <td>User ID</td>
-                    <td>${review.user_id}</td>
+                    <td>${review.userId}</td>
                 </tr>
                 <tr class="table-primary text-center">
                     <td>Date</td>
-                    <td>${review.review_date}</td>
+                    <td>${review.reviewDate}</td>
                 </tr>
                 <tr class="table-primary text-center">
                     <td>Rating</td>
@@ -57,7 +57,7 @@
                 </tr>
                 <tr class="table-primary text-center">
                     <td>Review</td>
-                    <td>${review.review_text}</td>
+                    <td>${review.reviewText}</td>
                 </tr>
             </table>
 
