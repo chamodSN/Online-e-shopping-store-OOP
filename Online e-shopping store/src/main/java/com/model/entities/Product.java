@@ -25,17 +25,20 @@ public class Product {
 			this.warranty = warranty;
 		}
 		
+		//constructor overloading for cart
 		public Product(int productId) {
 			this.productId = productId;
 		}
 
+		//constructor overloading for cart
 		public Product(int productId, String productName, double price, String category) {
 			this.productId = productId;
 			this.productName = productName;
 			this.price = price;
 			this.category = category;
 		}
-
+		
+		//constructor overloading for order
 		public Product(int productId, String productName) {
 			this.productId = productId;
 			this.productName = productName;

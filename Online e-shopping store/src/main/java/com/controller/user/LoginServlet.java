@@ -28,8 +28,8 @@ public class LoginServlet extends HttpServlet {
 
 		String userName = request.getParameter("loginUserName");
 		String password = request.getParameter("loginPassword");
-		System.out.println(userName);
-		System.out.println(password);
+		//System.out.println(userName);
+		//System.out.println(password);
 		boolean isTrue;
 
 		try {
@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 
 			isTrue = UserServicesDBUtil.validate(userName, password);
 			
-			System.out.println(isTrue);
+			//System.out.println(isTrue);
 			
 			//UserDBUtil uDBUtil = new UserDBUtil();
 

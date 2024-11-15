@@ -6,8 +6,8 @@
 <%@ page import="java.util.*"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-ProductDBUtil pDBU = new ProductDBUtil();
-List<Product> products = pDBU.getTop5ProductDetails();
+//ProductDBUtil pDBU = new ProductDBUtil();
+List<Product> products = ProductDBUtil.getInstance().getTop5ProductDetails();
 %>
 <!DOCTYPE html>
 <html>

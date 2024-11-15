@@ -17,21 +17,16 @@ public class AddReviewServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ReviewDBUtil rDBU = new ReviewDBUtil();
+		//ReviewDBUtil rDBU = new ReviewDBUtil();
 
 		String rateNumber = request.getParameter("rating");
 		String rateText = request.getParameter("review");
 		String productId = request.getParameter("proId");
 		String userId = request.getParameter("userId");
 
-		System.out.println("Rating: " + rateNumber);
-		System.out.println("Review: " + rateText);
-		System.out.println("Product ID: " + productId);
-		System.out.println("User ID: " + userId);
-
 		boolean isTrue;
 
-		isTrue = rDBU.insertReview(productId, userId, rateNumber, rateText);
+		isTrue = ReviewDBUtil.getInstance().insertReview(productId, userId, rateNumber, rateText);
 
 		if (isTrue == true) {
 			RequestDispatcher dis = request.getRequestDispatcher("sucess.jsp");

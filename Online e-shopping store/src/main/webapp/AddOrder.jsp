@@ -27,10 +27,11 @@
 	<div class="container mt-5">
 		<h2 class="text-center">Add Order</h2>
 		<form action="addOrder" method="POST" class="w-50 mx-auto">
-			<input type="hidden" name="prId" value="<%= productId %>"> <input
+			<%-- sending essential values to AddOrderServlet using hidden input parameters --%>
+			<input type="hidden" name="prId" value="<%=productId%>"> <input
 				type="hidden" name="userId" value="${userSessions[0].userId}">
-				<input type="hidden" name="unitPrice" value="<%= price %>">
-				<input type="hidden" name="prName" value="<%= pName %>">
+			<input type="hidden" name="unitPrice" value="<%=price%>"> <input
+				type="hidden" name="prName" value="<%=pName%>">
 			<div class="mb-3">
 				<label for="customerName" class="form-label">Customer Name</label> <input
 					type="text" class="form-control" name="customerName" required>
@@ -41,7 +42,7 @@
 			</div>
 			<div class="mb-3">
 				<label for="country" class="form-label">Country</label> <input
-					type="text" class="form-control" name="country"required>
+					type="text" class="form-control" name="country" required>
 			</div>
 
 			<div class="mb-3">
@@ -51,7 +52,8 @@
 
 			<div class="mb-3">
 				<label for="contactNumber" class="form-label">Contact Number</label>
-				<input type="text" class="form-control" name="contactNumber">
+				<input type="text" class="form-control" name="contactNumber"
+					pattern="^(070|071|072|075|076|077|078|079)\d{7}$">
 			</div>
 
 			<div class="mb-3">

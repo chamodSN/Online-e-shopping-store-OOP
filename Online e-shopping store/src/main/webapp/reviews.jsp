@@ -7,8 +7,8 @@
 <%@ page import="java.util.*"%>
 
 <%
-ReviewDBUtil rDBU = new ReviewDBUtil();
-List<Review> reviews = rDBU.getReviewDetails();
+//ReviewDBUtil rDBU = new ReviewDBUtil();
+List<Review> reviews = ReviewDBUtil.getInstance().getReviewDetails();
 %>
 <!DOCTYPE html>
 <html>

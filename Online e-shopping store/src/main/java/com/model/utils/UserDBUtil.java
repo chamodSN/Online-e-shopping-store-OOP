@@ -143,6 +143,7 @@ public class UserDBUtil  implements IUser{
 
 	}
 	
+	//singltan design pattern
 	public static UserDBUtil getInstance() {
 		if(instance == null) {
 			instance = new UserDBUtil(); 

@@ -54,7 +54,8 @@ public class ReviewDBUtil implements IReview{
 		return review;
 
 	}
-
+	
+	//to display all reviews belongs to a product
 	public List<Review> getReviews(String productId) {
 
 		ArrayList<Review> review = new ArrayList<>();
@@ -144,6 +145,7 @@ public class ReviewDBUtil implements IReview{
 		return isSuccess;
 	}
 
+	
 	public List<Review> getReviewDetails(String reviewId) {
 
 		int convertedID = Integer.parseInt(reviewId);
@@ -181,6 +183,7 @@ public class ReviewDBUtil implements IReview{
 
 	}
 	
+	//get all reviews for the reviews page
 	public List<Review> getReviewDetails() {
 
 		ArrayList<Review> review = new ArrayList<>();

@@ -15,7 +15,7 @@ import javax.servlet.http.Part;
 import com.model.utils.ProductDBUtil;
 
 @WebServlet("/AddProductServlet")
-@MultipartConfig
+@MultipartConfig //anotation
 public class AddProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

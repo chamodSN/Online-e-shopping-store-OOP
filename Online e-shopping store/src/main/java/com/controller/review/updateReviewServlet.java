@@ -31,13 +31,6 @@ public class UpdateReviewServlet extends HttpServlet {
 		String review = request.getParameter("review");
 		String date = request.getParameter("date");
 
-		System.out.println("Review ID: " + revid);
-		System.out.println("Product ID: " + productId);
-		System.out.println("User ID: " + userId);
-		System.out.println("Rating: " + rating);
-		System.out.println("Review: " + review);
-		System.out.println("Date: " + date);
-
 		isTrue = ReviewDBUtil.getInstance().updateReview(revid, productId, userId, rating, review, date);
 
 		System.out.println("Is true value: " + isTrue);

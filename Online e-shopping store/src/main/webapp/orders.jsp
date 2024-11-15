@@ -9,8 +9,8 @@
 <%@ page import="java.util.*"%>
 
 <%
-OrderDBUtil oDBU = new OrderDBUtil();
-List<Order> orders = oDBU.getOrderDetails();
+//OrderDBUtil oDBU = new OrderDBUtil();
+List<Order> orders = OrderDBUtil.getInstance().getOrderDetails();
 %>
 
 <!DOCTYPE html>
