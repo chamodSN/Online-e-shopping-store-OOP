@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Nexify is a user-friendly online e-shopping platform designed to simplify the shopping experience. This project was developed as part of the Object-Oriented Programming (OOP) module in Year 2, Semester 1 at SLIIT. The platform adheres to the provided guidelines and incorporates essential and special functionalities that set it apart from typical e-commerce applications.
+Nexify is a user-friendly online e-shopping platform designed to simplify the shopping experience. This project was developed as part of the Object-Oriented Programming (OOP) module in Year 2, Semester 1 at SLIIT.
 
 Our project emphasizes **clean code**, **modular design**, and a **well-organized file structure**, adhering to Java naming conventions and best practices.
 
@@ -38,3 +38,20 @@ The project is organized following the **MVC architecture** and proper Java codi
 - **Coding Standards**:
   - Proper naming conventions for classes, methods, and variables.
   - Clear separation of concerns across layers: Controller, DAO, Model, Service.
+ 
+---
+
+## Installation Instructions for Users
+
+1. **Download the project** files or clone the repository.
+2. **Set up the database** using the provided schema.
+3. **Open the project in Eclipse IDE**.
+   - Navigate to `File > Import > Existing Projects into Workspace`.
+4. **Configure the database connection** in the DBConnect class.
+   - Navigate to `dao > DBConnect`.
+5. **Configure the server**:
+   - Add an **Apache Tomcat** server to Eclipse.
+   - Deploy the project on the configured server.
+6. **Run the project on the server**:
+   - Right-click the project in Eclipse and select `Run As > Run on Server`.
+7. **Access the application through the browser**.
