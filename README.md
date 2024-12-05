@@ -2,7 +2,6 @@
 
 ![Nexify](https://github.com/user-attachments/assets/1fdbb276-9d5a-4cd1-9de5-6b6c19f6f257)
 
-
 ## Introduction
 
 Nexify is a user-friendly online e-shopping platform designed to simplify the shopping experience. This project was developed as part of the Object-Oriented Programming (OOP) module in Year 2, Semester 1 at SLIIT.
