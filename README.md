@@ -11,6 +11,7 @@ Our project emphasizes **clean code**, **modular design**, and a **well-organize
 
 ## Features
 
+- **Admin Functionality**: Admins can add new products to the platform.
 - **User Authentication**: Users must log in to add or view reviews for products.
 - **Guest Accessibility**: Non-logged-in users can browse and add items to their cart using sessions.
 - **Dynamic Shopping Cart**: Allows cart functionality for both logged-in and guest users.
@@ -55,3 +56,7 @@ The project is organized following the **MVC architecture** and proper Java codi
 6. **Run the project on the server**:
    - Right-click the project in Eclipse and select `Run As > Run on Server`.
 7. **Access the application through the browser**.
+
+---
+
+## We welcome contributions to Nexify!
