@@ -1,6 +1,6 @@
 # Nexify: An Online E-Shopping Store
 
-![Nexify](readmeImages/home.png)
+![Nexify](Online e-shopping store\readmeImages\home.png)
 
 
 ## Introduction
