@@ -12,12 +12,14 @@ Our project emphasizes **clean code**, **modular design**, and a **well-organize
 ## Features
 
 - **Admin Functionality**: Admins can add new products to the platform.
+- **Search Functionality**: Users can search for products by name or category for easier navigation.
 - **User Authentication**: Users must log in to add or view reviews for products.
 - **Guest Accessibility**: Non-logged-in users can browse and add items to their cart using sessions.
 - **Dynamic Shopping Cart**: Allows cart functionality for both logged-in and guest users.
 - **Product Reviews**: Reviews and ratings are accessible only after logging in.
 - **Order Management**: Order details can be added, updated, or deleted. However, inventory quantity remains unchanged (future enhancement planned).
-
+- **Front-End Validations**: Ensures data integrity and provides a seamless user experience.
+  
 ---
 
 ## File Structure
