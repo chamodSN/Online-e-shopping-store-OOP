@@ -1,5 +1,7 @@
 # Nexify: An Online E-Shopping Store
 
+![Nexify](readmeImages/home.png)
+
 
 ## Introduction
 
