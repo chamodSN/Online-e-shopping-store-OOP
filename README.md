@@ -1,7 +1,6 @@
 # Nexify: An Online E-Shopping Store
 
-![Nexify](readmeImages/home.png)
-
+![Nexify](https://github.com/user-attachments/assets/1fdbb276-9d5a-4cd1-9de5-6b6c19f6f257)
 
 ## Introduction
 
@@ -60,6 +59,8 @@ The project is organized following the **MVC architecture** and proper Java codi
 6. **Run the project on the server**:
    - Right-click the project in Eclipse and select `Run As > Run on Server`.
 7. **Access the application through the browser**.
+
+![schema](https://github.com/user-attachments/assets/d2d12342-5d5b-4dab-83cc-6df3857de9e9)
 
 ---
 
