@@ -60,6 +60,8 @@ The project is organized following the **MVC architecture** and proper Java codi
    - Right-click the project in Eclipse and select `Run As > Run on Server`.
 7. **Access the application through the browser**.
 
+![schema](https://github.com/user-attachments/assets/d2d12342-5d5b-4dab-83cc-6df3857de9e9)
+
 ---
 
 ## We welcome contributions to Nexify!
