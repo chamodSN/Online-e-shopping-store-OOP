@@ -15,36 +15,45 @@ import com.model.utils.OrderDBUtil;
 public class AddOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String customerName = request.getParameter("customerName");
+		int quantity = Integer.parseInt(request.getParameter("quantity"));
+		String country = request.getParameter("country");
+		String district = request.getParameter("district");
+		String contactNumber = request.getParameter("contactNumber");
+		String shippingAddress = request.getParameter("shippingAddress");
+		double unitPrice = Double.parseDouble(request.getParameter("unitPrice"));
+		int productId = Integer.parseInt(request.getParameter("prId"));
+		int customerId = Integer.parseInt(request.getParameter("userId"));
+		String productName = request.getParameter("prName");
+		double totalPrice = unitPrice * quantity;
+
+		boolean isOrderPlaced = false;
+
+		// Step 1: Check stock
+		int currentStock = OrderDBUtil.getInstance().getProductStock(productId);
 		
-			//OrderDBUtil oDBU = new OrderDBUtil();
+		if (currentStock >= quantity) {
+			// Step 2: Place order
+			isOrderPlaced = OrderDBUtil.getInstance().insertOrder(customerName, quantity, country, district,
+					contactNumber, shippingAddress, totalPrice, productId, customerId, productName);
+			System.out.println("DEBUG: isOrderPlaced = " + isOrderPlaced);
 
-				String customerName = request.getParameter("customerName");
-				int quantity = Integer.parseInt(request.getParameter("quantity"));
-				String country = request.getParameter("country");
-				String district = request.getParameter("district");
-				String contactNumber = request.getParameter("contactNumber");
-				String shippingAddress = request.getParameter("shippingAddress");
-				double unitPrice = Double.parseDouble(request.getParameter("unitPrice"));
-				int productId = Integer.parseInt(request.getParameter("prId"));
-				int customerId = Integer.parseInt(request.getParameter("userId"));
-				String productName = request.getParameter("prName");
-				double totalPrice = unitPrice * quantity;
-
-				boolean isTrue;
-
-				isTrue = OrderDBUtil.getInstance().insertOrder(customerName, quantity, country, district, contactNumber, shippingAddress,
-						totalPrice, productId, customerId, productName);
-
-
-				if (isTrue == true) {
-					RequestDispatcher dis = request.getRequestDispatcher("sucess.jsp");
-					dis.forward(request, response);
-				} else {
-					RequestDispatcher dis2 = request.getRequestDispatcher("unsucess.jsp");
-					dis2.forward(request, response);
-				}
-
+			// Step 3: Deduct stock if order placed
+			if (isOrderPlaced) {
+				OrderDBUtil.getInstance().deductStock(productId, quantity);
 			}
+		}
 
+		if (isOrderPlaced) {
+			RequestDispatcher dis = request.getRequestDispatcher("sucess.jsp");
+			dis.forward(request, response);
+		} else {
+			request.setAttribute("errorMsg", "Order failed: Not enough stock or database error.");
+			RequestDispatcher dis2 = request.getRequestDispatcher("unsucess.jsp");
+			dis2.forward(request, response);
+		}
+	}
 }
