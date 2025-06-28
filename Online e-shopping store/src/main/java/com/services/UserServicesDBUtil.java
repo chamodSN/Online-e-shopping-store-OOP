@@ -4,39 +4,40 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import dao.DBConnect;
 
-public class UserServicesDBUtil{
-	
-	private static boolean isSuccess;
-	private static Connection con = null;
-	private static Statement stat = null;
-	private static ResultSet rs = null;
+public class UserServicesDBUtil {
+    
+    private static boolean isSuccess;
+    private static Connection con = null;
+    private static Statement stat = null;
+    private static ResultSet rs = null;
 
-	
-	public static boolean validate(String loginUserName, String loginPassword) {
+    public static boolean validate(String loginUserName, String loginPassword) {
+        isSuccess = false;
 
-		try {
+        try {
+            con = DBConnect.getConnection();
+            stat = con.createStatement();
 
-			con = DBConnect.getConnection();
-			stat = con.createStatement();
+            String sql = "SELECT password FROM users WHERE username = '" + loginUserName + "'";
 
-			String sql = "SELECT * FROM users WHERE username = '" + loginUserName + "' AND password = '" + loginPassword
-					+ "'";
+            rs = stat.executeQuery(sql);
 
-			rs = stat.executeQuery(sql);
+            if (rs.next()) {
+                String hashedPassword = rs.getString("password");
 
-			if (rs.next()) {
-				isSuccess = true;
-			} else {
-				isSuccess = false;
-			}
+                if (BCrypt.checkpw(loginPassword, hashedPassword)) {
+                    isSuccess = true;
+                }
+            }
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-		return isSuccess;
-	}
-
+        return isSuccess;
+    }
 }

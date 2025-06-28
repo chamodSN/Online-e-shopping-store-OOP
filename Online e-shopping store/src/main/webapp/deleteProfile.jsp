@@ -14,7 +14,6 @@
 	<%
 	String id = request.getParameter("userId");
 	String userName = request.getParameter("userName");
-	String password = request.getParameter("password");
 	String email = request.getParameter("email");
 	String url = request.getParameter("image");
 	%>

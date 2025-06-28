@@ -21,5 +21,6 @@
 	<classpathentry kind="lib" path="F:/SLIIT/Y2S1/OOP PROJECT/JAR Files/mysql-connector-java-5.1.48.jar"/>
 	<classpathentry kind="lib" path="F:/SLIIT/Y2S1/OOP PROJECT/JAR Files/mysql-connector-java-5.1.48-bin.jar"/>
 	<classpathentry kind="lib" path="F:/SLIIT/Y2S1/OOP PROJECT/JAR Files/servlet-api.jar"/>
+	<classpathentry kind="lib" path="F:/SLIIT/Y2S1/OOP PROJECT/JAR Files/jBCrypt-0.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

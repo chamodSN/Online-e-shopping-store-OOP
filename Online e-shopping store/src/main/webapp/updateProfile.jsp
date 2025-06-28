@@ -15,7 +15,6 @@
 	<%
 	String id = request.getParameter("userId");
 	String userName = request.getParameter("userName");
-	String password = request.getParameter("password");
 	String email = request.getParameter("email");
 	String url = request.getParameter("image");
 	%>
@@ -39,8 +38,8 @@
 					class="form-control" name="userName" value="<%=userName%>">
 			</div>
 			<div class="mb-3 w-50 mx-auto">
-				<label for="loginPassword">Password:</label> <input type="password"
-					class="form-control" name="password" value="<%=password%>">
+				<label for="loginPassword">Password:</label> <input type="password" 
+				class="form-control" name="password" placeholder="Enter new password (leave blank to keep existing)">
 			</div>
 			<div class="mb-3 w-50 mx-auto">
 				<label for="loginEmail">Email:</label> <input type="email"

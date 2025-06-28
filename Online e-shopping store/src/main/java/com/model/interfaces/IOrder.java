@@ -25,5 +25,7 @@ public interface IOrder {
 	public int getProductStock(int productId);
 
 	public boolean deductStock(int productId, int quantity);
+	
+	public boolean addStock(int productId, int quantity);
 
 }
