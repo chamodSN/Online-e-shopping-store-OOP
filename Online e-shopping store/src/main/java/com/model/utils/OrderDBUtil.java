@@ -11,235 +11,267 @@ import com.model.interfaces.IOrder;
 
 import dao.DBConnect;
 
-public class OrderDBUtil  implements IOrder{
-	
+public class OrderDBUtil implements IOrder {
+
 	private static boolean isSuccess;
 	private static Connection con = null;
 	private static Statement stat = null;
 	private static ResultSet rs = null;
 	private static OrderDBUtil instance;
 
-		@Override
-		public List<Order> validate(String orderId) {
+	@Override
+	public List<Order> validate(String orderId) {
 
-			ArrayList<Order> order = new ArrayList<>();
+		ArrayList<Order> order = new ArrayList<>();
 
-			try {
+		try {
 
-				con = DBConnect.getConnection();
-				stat = con.createStatement();
+			con = DBConnect.getConnection();
+			stat = con.createStatement();
 
-				String sql = "SELECT * FROM `order` WHERE orderId = '" + orderId + "'";
+			String sql = "SELECT * FROM `order` WHERE orderId = '" + orderId + "'";
 
-				rs = stat.executeQuery(sql);
+			rs = stat.executeQuery(sql);
 
-				if (rs.next()) {
+			if (rs.next()) {
 
-					int orderID = rs.getInt(1);
-					int quantity = rs.getInt(2);
-					String country = rs.getString(3);
-					String district = rs.getString(4);
-					String shippingAdd = rs.getString(5);
-					double totalPrice = rs.getDouble(6);
-					int customerId = rs.getInt(7);
-					String customerName = rs.getString(8);
-					String contactNum = rs.getString(9);
-					int productId = rs.getInt(10);
-					String productName = rs.getString(11);
+				int orderID = rs.getInt(1);
+				int quantity = rs.getInt(2);
+				String country = rs.getString(3);
+				String district = rs.getString(4);
+				String shippingAdd = rs.getString(5);
+				double totalPrice = rs.getDouble(6);
+				int customerId = rs.getInt(7);
+				String customerName = rs.getString(8);
+				String contactNum = rs.getString(9);
+				int productId = rs.getInt(10);
+				String productName = rs.getString(11);
 
-					Order o = new Order(orderID, quantity, country, district, shippingAdd, totalPrice, customerId,
-							customerName, contactNum, productId, productName);
+				Order o = new Order(orderID, quantity, country, district, shippingAdd, totalPrice, customerId,
+						customerName, contactNum, productId, productName);
 
-					order.add(o);
-				}
-
-			} catch (Exception e) {
-				e.printStackTrace();
+				order.add(o);
 			}
 
-			return order;
-
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		@Override
-		public boolean insertOrder(String customerName, int quantity, String country, String district,
-				String contactNumber, String shippingAddress, double totalPrice, int productId, int customerId,
-				String productName) {
 
-			try {
+		return order;
 
-				con = DBConnect.getConnection();
-				stat = con.createStatement();
-				
-				String sql = "INSERT INTO `order`  VALUES(0, '" + quantity + "', '" + country + "', '" + district + "', '"
-						+ shippingAddress + "', '" + totalPrice + "', '" + customerId + "', '" + customerName + "', '"
-						+ contactNumber + "', '" + productId + "', '" + productName + "')";
-				int rs = stat.executeUpdate(sql);
+	}
 
-				if (rs > 0) {
-					isSuccess = true;
-				} else {
-					isSuccess = false;
-				}
+	@Override
+	public boolean insertOrder(String customerName, int quantity, String country, String district,
+			String contactNumber, String shippingAddress, double totalPrice, int productId, int customerId,
+			String productName) {
 
-			} catch (Exception e) {
-				e.printStackTrace();
+		try {
+
+			con = DBConnect.getConnection();
+			stat = con.createStatement();
+
+			String sql = "INSERT INTO `order`  VALUES(0, '" + quantity + "', '" + country + "', '" + district + "', '"
+					+ shippingAddress + "', '" + totalPrice + "', '" + customerId + "', '" + customerName + "', '"
+					+ contactNumber + "', '" + productId + "', '" + productName + "')";
+			int rs = stat.executeUpdate(sql);
+
+			if (rs > 0) {
+				isSuccess = true;
+			} else {
+				isSuccess = false;
 			}
 
-			return isSuccess;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		@Override
-		public boolean updateOrder(String orderId, int quantity, String country, String district,
-				String shippingAddress, double totalPrice, int customerId, String customerName, String contactNumber,
-				int productId) {
 
-			try {
+		return isSuccess;
+	}
 
-				con = DBConnect.getConnection();
-				stat = con.createStatement();
-				
-				String sql = "UPDATE `order` SET quantity='" + quantity + "', country='" + country + "', district='"
-						+ district + "', shippingAddress='" + shippingAddress + "', totalPrice='" + totalPrice
-						+ "',  customerName='" + customerName + "', contactNumber='" + contactNumber + "' WHERE orderId = '"
-						+ orderId + "'";
+	@Override
+	public boolean updateOrder(String orderId, int quantity, String country, String district,
+			String shippingAddress, double totalPrice, int customerId, String customerName, String contactNumber,
+			int productId) {
 
-				int rs = stat.executeUpdate(sql);
+		try {
 
-				if (rs > 0) {
-					isSuccess = true;
-				} else {
-					isSuccess = false;
-				}
+			con = DBConnect.getConnection();
+			stat = con.createStatement();
 
-			} catch (Exception e) {
-				e.printStackTrace();
+			String sql = "UPDATE `order` SET quantity='" + quantity + "', country='" + country + "', district='"
+					+ district + "', shippingAddress='" + shippingAddress + "', totalPrice='" + totalPrice
+					+ "',  customerName='" + customerName + "', contactNumber='" + contactNumber + "' WHERE orderId = '"
+					+ orderId + "'";
+
+			int rs = stat.executeUpdate(sql);
+
+			if (rs > 0) {
+				isSuccess = true;
+			} else {
+				isSuccess = false;
 			}
 
-			return isSuccess;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		//get sertain order details using orderId
-		@Override
-		public List<Order> getOrderDetails(String orderId) {
 
-			int convertedID = Integer.parseInt(orderId);
+		return isSuccess;
+	}
 
-			ArrayList<Order> order = new ArrayList<>();	
+	// get sertain order details using orderId
+	@Override
+	public List<Order> getOrderDetails(String orderId) {
 
-			try {
+		int convertedID = Integer.parseInt(orderId);
 
-				con = DBConnect.getConnection();
-				stat = con.createStatement();
+		ArrayList<Order> order = new ArrayList<>();
 
-				String sql = "SELECT * FROM `order` WHERE orderId = '" + convertedID + "'";
+		try {
 
-				rs = stat.executeQuery(sql);
+			con = DBConnect.getConnection();
+			stat = con.createStatement();
 
-				while (rs.next()) {
+			String sql = "SELECT * FROM `order` WHERE orderId = '" + convertedID + "'";
 
-					int orderID = rs.getInt(1);
-					int quantity = rs.getInt(2);
-					String country = rs.getString(3);
-					String district = rs.getString(4);
-					String shippingAdd = rs.getString(5);
-					double totalPrice = rs.getDouble(6);
-					int customerId = rs.getInt(7);
-					String customerName = rs.getString(8);
-					String contactNum = rs.getString(9);
-					int productId = rs.getInt(10);
-					String productName = rs.getString(11);
+			rs = stat.executeQuery(sql);
 
-					Order o = new Order(orderID, quantity, country, district, shippingAdd, totalPrice, customerId,
-							customerName, contactNum, productId, productName);
+			while (rs.next()) {
 
-					order.add(o);
-				}
+				int orderID = rs.getInt(1);
+				int quantity = rs.getInt(2);
+				String country = rs.getString(3);
+				String district = rs.getString(4);
+				String shippingAdd = rs.getString(5);
+				double totalPrice = rs.getDouble(6);
+				int customerId = rs.getInt(7);
+				String customerName = rs.getString(8);
+				String contactNum = rs.getString(9);
+				int productId = rs.getInt(10);
+				String productName = rs.getString(11);
 
-			} catch (Exception e) {
-				e.printStackTrace();
+				Order o = new Order(orderID, quantity, country, district, shippingAdd, totalPrice, customerId,
+						customerName, contactNum, productId, productName);
+
+				order.add(o);
 			}
 
-			return order;
-
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		//get all orders in data base for the orders.jsp
-		@Override
-		public List<Order> getOrderDetails() {
 
-			ArrayList<Order> order = new ArrayList<>();
+		return order;
 
-			try {
+	}
 
-				con = DBConnect.getConnection();
-				stat = con.createStatement();
-				
-				String sql = "SELECT * FROM `order`";
+	// get all orders in data base for the orders.jsp
+	@Override
+	public List<Order> getOrderDetails() {
 
-				rs = stat.executeQuery(sql);
+		ArrayList<Order> order = new ArrayList<>();
 
-				while (rs.next()) {
+		try {
 
-					int orderID = rs.getInt(1);
-					int quantity = rs.getInt(2);
-					String country = rs.getString(3);
-					String district = rs.getString(4);
-					String shippingAdd = rs.getString(5);
-					double totalPrice = rs.getDouble(6);
-					int customerId = rs.getInt(7);
-					String customerName = rs.getString(8);
-					String contactNum = rs.getString(9);
-					int productId = rs.getInt(10);
-					String productName = rs.getString(11);
+			con = DBConnect.getConnection();
+			stat = con.createStatement();
 
-					Order o = new Order(orderID, quantity, country, district, shippingAdd, totalPrice, customerId,
-							customerName, contactNum, productId, productName);
+			String sql = "SELECT * FROM `order`";
 
-					order.add(o);
-				}
+			rs = stat.executeQuery(sql);
 
-			} catch (Exception e) {
-				e.printStackTrace();
+			while (rs.next()) {
+
+				int orderID = rs.getInt(1);
+				int quantity = rs.getInt(2);
+				String country = rs.getString(3);
+				String district = rs.getString(4);
+				String shippingAdd = rs.getString(5);
+				double totalPrice = rs.getDouble(6);
+				int customerId = rs.getInt(7);
+				String customerName = rs.getString(8);
+				String contactNum = rs.getString(9);
+				int productId = rs.getInt(10);
+				String productName = rs.getString(11);
+
+				Order o = new Order(orderID, quantity, country, district, shippingAdd, totalPrice, customerId,
+						customerName, contactNum, productId, productName);
+
+				order.add(o);
 			}
 
-			return order;
-
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		@Override
-		public boolean deleteOrder(String id) {
 
-			int convertedID = Integer.parseInt(id);
-			
-			try {
+		return order;
 
-				con = DBConnect.getConnection();
-				stat = con.createStatement();
+	}
 
-				String sql = "DELETE FROM `order` WHERE orderId = '" + convertedID + "'";
+	@Override
+	public boolean deleteOrder(String id) {
 
-				int rs = stat.executeUpdate(sql);
+		int convertedID = Integer.parseInt(id);
 
-				if (rs > 0) {
-					isSuccess = true;
-				} else {
-					isSuccess = false;
-				}
+		try {
 
-			} catch (Exception e) {
-				e.printStackTrace();
+			con = DBConnect.getConnection();
+			stat = con.createStatement();
+
+			String sql = "DELETE FROM `order` WHERE orderId = '" + convertedID + "'";
+
+			int rs = stat.executeUpdate(sql);
+
+			if (rs > 0) {
+				isSuccess = true;
+			} else {
+				isSuccess = false;
 			}
 
-			return isSuccess;
-
-		}	
-		
-		public static OrderDBUtil getInstance() {
-			if(instance == null) {
-				instance = new OrderDBUtil(); 
-			}
-			return instance;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+
+		return isSuccess;
+
+	}
+
+	public static OrderDBUtil getInstance() {
+		if (instance == null) {
+			instance = new OrderDBUtil();
+		}
+		return instance;
+	}
+
+	@Override
+	public int getProductStock(int productId) {
+		int stock = 0;
+		try (Connection conn = DBConnect.getConnection();
+				PreparedStatement stmt = conn
+						.prepareStatement("SELECT stockQuantity FROM product WHERE productId = ?")) {
+			stmt.setInt(1, productId);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				stock = rs.getInt("stockQuantity");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return stock;
+	}
+
+	@Override
+	public boolean deductStock(int productId, int quantity) {
+		try (Connection conn = DBConnect.getConnection();
+				PreparedStatement stmt = conn
+						.prepareStatement("UPDATE product SET stockQuantity = stockQuantity - ? WHERE productId = ?")) {
+			stmt.setInt(1, quantity);
+			stmt.setInt(2, productId);
+			int rows = stmt.executeUpdate();
+			return rows > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 }
