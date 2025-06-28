@@ -18,7 +18,7 @@ Our project emphasizes **clean code**, **modular design**, and a **well-organize
 - **Guest Accessibility**: Non-logged-in users can browse and add items to their cart using sessions.
 - **Dynamic Shopping Cart**: Allows cart functionality for both logged-in and guest users.
 - **Product Reviews**: Reviews and ratings are accessible only after logging in.
-- **Order Management**: Order details can be added, updated, or deleted. However, inventory quantity remains unchanged (future enhancement planned).
+- **Order Management**: Order details can be added, updated, or deleted. inventory quantity changes when placing an order.
 - **Front-End Validations**: Ensures data integrity and provides a seamless user experience.
   
 ---
