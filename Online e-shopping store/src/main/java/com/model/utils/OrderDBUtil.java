@@ -245,32 +245,41 @@ public class OrderDBUtil implements IOrder {
 	@Override
 	public int getProductStock(int productId) {
 		int stock = 0;
-		try (Connection conn = DBConnect.getConnection();
-				PreparedStatement stmt = conn
-						.prepareStatement("SELECT stockQuantity FROM product WHERE productId = ?")) {
-			stmt.setInt(1, productId);
-			ResultSet rs = stmt.executeQuery();
+
+		try {
+			con = DBConnect.getConnection();
+			stat = con.createStatement();
+
+			String sql = "SELECT stock_quantity FROM products WHERE product_id = '" + productId + "'";
+			rs = stat.executeQuery(sql);
+
 			if (rs.next()) {
-				stock = rs.getInt("stockQuantity");
+				stock = rs.getInt("stock_quantity");
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		return stock;
 	}
 
 	@Override
 	public boolean deductStock(int productId, int quantity) {
-		try (Connection conn = DBConnect.getConnection();
-				PreparedStatement stmt = conn
-						.prepareStatement("UPDATE product SET stockQuantity = stockQuantity - ? WHERE productId = ?")) {
-			stmt.setInt(1, quantity);
-			stmt.setInt(2, productId);
-			int rows = stmt.executeUpdate();
+		try {
+			con = DBConnect.getConnection();
+			stat = con.createStatement();
+
+			String sql = "UPDATE products SET stock_quantity = stock_quantity - " + quantity + " WHERE product_id = '"
+					+ productId + "'";
+			int rows = stat.executeUpdate(sql);
+
 			return rows > 0;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		return false;
 	}
 

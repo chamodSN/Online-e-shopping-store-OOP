@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.model.utils.OrderDBUtil;
-import com.model.utils.ProductDBUtil;
 
 @WebServlet("/AddOrderServlet")
 public class AddOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		String customerName = request.getParameter("customerName");
 		int quantity = Integer.parseInt(request.getParameter("quantity"));
@@ -33,15 +33,17 @@ public class AddOrderServlet extends HttpServlet {
 		boolean isOrderPlaced = false;
 
 		// Step 1: Check stock
-		int currentStock = ProductDBUtil.getInstance().getProductStock(productId);
+		int currentStock = OrderDBUtil.getInstance().getProductStock(productId);
+		
 		if (currentStock >= quantity) {
 			// Step 2: Place order
 			isOrderPlaced = OrderDBUtil.getInstance().insertOrder(customerName, quantity, country, district,
 					contactNumber, shippingAddress, totalPrice, productId, customerId, productName);
+			System.out.println("DEBUG: isOrderPlaced = " + isOrderPlaced);
 
 			// Step 3: Deduct stock if order placed
 			if (isOrderPlaced) {
-				ProductDBUtil.getInstance().deductStock(productId, quantity);
+				OrderDBUtil.getInstance().deductStock(productId, quantity);
 			}
 		}
 
