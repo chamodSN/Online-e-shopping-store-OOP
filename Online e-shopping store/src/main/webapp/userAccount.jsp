@@ -28,7 +28,6 @@ table {
 
 		<c:set var="userId" value="${user.userId}" />
 		<c:set var="userName" value="${user.userName}" />
-		<c:set var="password" value="${user.password}" />
 		<c:set var="email" value="${user.email}" />
 		<c:set var="imageUrl" value="${user.profileImage}" />
 
@@ -53,9 +52,10 @@ table {
 				</tr>
 
 				<tr class="table-primary text-center">
-					<td>PASSWORD</td>
-					<td>${user.password}</td>
+    				<td>PASSWORD</td>
+				    <td>********** (hidden)</td>
 				</tr>
+
 				<tr class="table-primary text-center">
 					<td>E MAIL</td>
 					<td>${user.email}</td>
@@ -68,7 +68,6 @@ table {
 	<c:url value="updateProfile.jsp" var="updateProfile">
 		<c:param name="userId" value="${userId}" />
 		<c:param name="userName" value="${userName}" />
-		<c:param name="password" value="${password}" />
 		<c:param name="email" value="${email}" />
 		<c:param name="image" value="${imageUrl}" />
 	</c:url>
@@ -84,7 +83,6 @@ table {
 	<c:url value="deleteProfile.jsp" var="deleteProfile">
 		<c:param name="userId" value="${userId}" />
 		<c:param name="userName" value="${userName}" />
-		<c:param name="password" value="${password}" />
 		<c:param name="email" value="${email}" />
 		<c:param name="image" value="${imageUrl}" />
 	</c:url>

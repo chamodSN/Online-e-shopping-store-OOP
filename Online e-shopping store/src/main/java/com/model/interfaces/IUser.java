@@ -13,5 +13,6 @@ public interface IUser {
 	public List<User> getUserDetails(String uName);
 	
 	public boolean deleteUser(String id);
+	
 
 }

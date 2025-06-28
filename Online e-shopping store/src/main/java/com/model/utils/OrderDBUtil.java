@@ -282,5 +282,25 @@ public class OrderDBUtil implements IOrder {
 
 		return false;
 	}
+	
+	@Override
+	public boolean addStock(int productId, int quantity) {
+	    try {
+	        con = DBConnect.getConnection();
+	        stat = con.createStatement();
+
+	        String sql = "UPDATE products SET stock_quantity = stock_quantity + " + quantity + 
+	                     " WHERE product_id = '" + productId + "'";
+	        int rows = stat.executeUpdate(sql);
+
+	        return rows > 0;
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return false;
+	}
+
 
 }

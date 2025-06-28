@@ -16,6 +16,13 @@ public class User {
 		this.email = email;
 		this.profileImage = profileImage;
 	}
+	
+	public User(int userId, String userName, String email, String profileImage) {
+		this.userId = userId;
+		this.userName = userName;
+		this.email = email;
+		this.profileImage = profileImage;
+	}
 
 	public int getUserId() {
 		return userId;
